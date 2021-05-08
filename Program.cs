@@ -15,103 +15,72 @@ int length_function_name = 1;
 int length_local_var_name = 3;
 
 
+SyntaxNode FindVariableDeclarator(SyntaxNode node)
+{
+    if (node.Kind().ToString() == "VariableDeclarator")
+        return node;
+
+    foreach (SyntaxNode child_node in node.ChildNodes())
+    {
+        SyntaxNode new_node = FindVariableDeclarator(child_node);
+        if (new_node != null)
+            return new_node;
+    }
+
+    return null;
+}
+
+
+String GetNameOfToken(String declaration, SyntaxNode node)
+{
+    if (declaration == "FieldDeclaration" || declaration == "LocalDeclarationStatement")
+        node = FindVariableDeclarator(node);
+
+
+    IEnumerable<SyntaxToken> tokens = node.ChildTokens();
+    foreach (SyntaxToken token in tokens)
+    {
+        if (token.Kind().ToString() == "IdentifierToken")
+            return token.Text;
+    }
+    
+    return null;
+}
+
+String Filter(SyntaxNode node, String declaration)
+{
+    
+    if (node.Kind().ToString() == declaration)
+        return GetNameOfToken(declaration, node);
+
+    return null;
+
+}
 
 void Visit(SyntaxNode node)
 {
-    //here something doing with the node
+    String class_name = Filter(node, "ClassDeclaration");
+    if (class_name != null && class_name.Length > length_class_name)
+            Console.WriteLine($"Length of name of class \"{class_name}\" more than acceptable");
 
-    IEnumerable<SyntaxToken> tokens = node.ChildTokens();
-    if (node.Kind().ToString() == "ClassDeclaration")
-    {
-        foreach (SyntaxToken token in tokens)
-        {
-            if(token.Kind().ToString() == "IdentifierToken")
-            {
-                if (token.Text.Length > length_class_name)
-                    Console.WriteLine($"Length of name of class \"{token.Text}\" more than acceptable");
-            }
-        }
-    }
+    String property_name = Filter(node, "PropertyDeclaration");
+    if (property_name != null && property_name.Length > length_property_name)
+        Console.WriteLine($"Length of name of property \"{property_name}\" more than acceptable");
 
-    if (node.Kind().ToString() == "PropertyDeclaration")
-    {
-        foreach (SyntaxToken token in tokens)
-        {
-            if (token.Kind().ToString() == "IdentifierToken")
-            {
-                if (token.Text.Length > length_property_name)
-                    Console.WriteLine($"Length of name of property \"{token.Text}\" more than acceptable");
-            }
-        }
-    }
+    String method_name = Filter(node, "MethodDeclaration");
+    if (method_name != null && method_name.Length > length_function_name)
+        Console.WriteLine($"Length of name of function \"{method_name}\" more than acceptable");
 
-    if (node.Kind().ToString() == "MethodDeclaration")
-    {
-        foreach (SyntaxToken token in tokens)
-        {
-            if (token.Kind().ToString() == "IdentifierToken")
-            {
-                if (token.Text.Length > length_function_name)
-                    Console.WriteLine($"Length of name of method \"{token.Text}\" more than acceptable");
-            }
-        }
-    }
+    String field_name = Filter(node, "FieldDeclaration");
+    if (field_name != null && field_name.Length > length_field_name)
+        Console.WriteLine($"Length of name of field \"{field_name}\" more than acceptable");
 
-    if (node.Kind().ToString() == "FieldDeclaration")
-    {
-        foreach (SyntaxNode child_node in node.ChildNodes())
-        {
-            if (node.Kind().ToString() == "VariableDeclaration")
-            {
-
-                foreach (SyntaxNode new_child_node in node.ChildNodes())
-                {
-                    if (node.Kind().ToString() == "VariableDeclaratior")
-                    {
-                        foreach (SyntaxToken token in tokens)
-                        {
-                            if (token.Kind().ToString() == "IdentifierToken")
-                            {
-                                if (token.Text.Length > length_field_name)
-                                    Console.WriteLine($"Length of name of field \"{token.Text}\" more than acceptable");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    if (node.Kind().ToString() == "LocalDeclarationStatement")
-    {
-        foreach (SyntaxNode child_node in node.ChildNodes())
-        {
-            if (node.Kind().ToString() == "VariableDeclaration")
-            {
-
-                foreach (SyntaxNode new_child_node in node.ChildNodes())
-                {
-                    if (node.Kind().ToString() == "VariableDeclaratior") 
-                    {
-                        foreach (SyntaxToken token in tokens)
-                        {
-                            if (token.Kind().ToString() == "IdentifierToken")
-                            {
-                                if (token.Text.Length > length_local_var_name)
-                                    Console.WriteLine($"Length of name of local variable \"{token.Text}\" more than acceptable");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    //foreach (SyntaxToken token in tokens)
+    String local_var_name = Filter(node, "LocalDeclarationStatement");
+    if (local_var_name != null && local_var_name.Length > length_local_var_name)
+        Console.WriteLine($"Length of name of local variable \"{local_var_name}\" more than acceptable");
 
     IEnumerable < SyntaxNode > nodes = node.ChildNodes();
+
     foreach (SyntaxNode child_node in nodes)
         Visit(child_node);
 }
@@ -128,8 +97,3 @@ Document[] Documents = documents.ToArray();
 
 foreach (Document document in documents)
     Visit(document.GetSyntaxTreeAsync().Result.GetRoot());
-
-
-
-
-
