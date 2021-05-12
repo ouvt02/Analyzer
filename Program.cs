@@ -7,75 +7,73 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System.Collections.Generic;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 int length_class_name = 3;
 int length_field_name = 2;
 int length_property_name = 5;
 int length_function_name = 1;
-int length_local_var_name = 3;
+int length_local_var_name = 1;
 
-
-SyntaxNode FindVariableDeclarator(SyntaxNode node)
-{
-    if (node.Kind().ToString() == "VariableDeclarator")
-        return node;
-
-    foreach (SyntaxNode child_node in node.ChildNodes())
-    {
-        SyntaxNode new_node = FindVariableDeclarator(child_node);
-        if (new_node != null)
-            return new_node;
-    }
-
-    return null;
-}
-
-
-String GetNameOfToken(String declaration, SyntaxNode node)
-{
-    if (declaration == "FieldDeclaration" || declaration == "LocalDeclarationStatement")
-        node = FindVariableDeclarator(node);
-
-
-    IEnumerable<SyntaxToken> tokens = node.ChildTokens();
-    foreach (SyntaxToken token in tokens)
-    {
-        if (token.Kind().ToString() == "IdentifierToken")
-            return token.Text;
-    }
-    
-    return null;
-}
-
-String Filter(SyntaxNode node, String declaration)
-{
-    
-    if (node.Kind().ToString() == declaration)
-        return GetNameOfToken(declaration, node);
-
-    return null;
-
-}
 
 void Visit(SyntaxNode node)
 {
-    String class_name = Filter(node, "ClassDeclaration");
-    if (class_name != null && class_name.Length > length_class_name)
-            Console.WriteLine($"Length of name of class \"{class_name}\" more than acceptable");
+    String class_name = null;
+    String property_name = null;
+    String method_name = null;
+    String field_name = null;
+    String local_var_name = null;
 
-    String property_name = Filter(node, "PropertyDeclaration");
+    if (node is VariableDeclaratorSyntax)
+    {
+        if (node.Parent is VariableDeclarationSyntax)
+        {
+            if (node.Parent.Parent is FieldDeclarationSyntax)
+            {
+                VariableDeclaratorSyntax nameSyntax = (VariableDeclaratorSyntax)node;
+                field_name = nameSyntax.Identifier.Text;
+            }
+
+            else if (node.Parent.Parent is LocalDeclarationStatementSyntax)
+            {
+                VariableDeclaratorSyntax nameSyntax = (VariableDeclaratorSyntax)node;
+                local_var_name = nameSyntax.Identifier.Text;
+            }
+
+        }
+    }
+
+    else if (node is ClassDeclarationSyntax)
+    {
+        ClassDeclarationSyntax nameSyntax = (ClassDeclarationSyntax)node;
+        class_name = nameSyntax.Identifier.Text;
+    }
+
+    else if (node is PropertyDeclarationSyntax)
+    {
+        PropertyDeclarationSyntax nameSyntax = (PropertyDeclarationSyntax)node;
+        property_name = nameSyntax.Identifier.Text;
+    }
+
+    else if (node is MethodDeclarationSyntax)
+    {
+        MethodDeclarationSyntax nameSyntax = (MethodDeclarationSyntax)node;
+        method_name = nameSyntax.Identifier.Text;
+    }
+
+
+    if (class_name != null && class_name.Length > length_class_name)
+        Console.WriteLine($"Length of name of class \"{class_name}\" more than acceptable");
+
     if (property_name != null && property_name.Length > length_property_name)
         Console.WriteLine($"Length of name of property \"{property_name}\" more than acceptable");
 
-    String method_name = Filter(node, "MethodDeclaration");
     if (method_name != null && method_name.Length > length_function_name)
         Console.WriteLine($"Length of name of function \"{method_name}\" more than acceptable");
 
-    String field_name = Filter(node, "FieldDeclaration");
     if (field_name != null && field_name.Length > length_field_name)
         Console.WriteLine($"Length of name of field \"{field_name}\" more than acceptable");
 
-    String local_var_name = Filter(node, "LocalDeclarationStatement");
     if (local_var_name != null && local_var_name.Length > length_local_var_name)
         Console.WriteLine($"Length of name of local variable \"{local_var_name}\" more than acceptable");
 
