@@ -13,17 +13,17 @@ int length_class_name = 3;
 int length_field_name = 2;
 int length_property_name = 5;
 int length_function_name = 1;
-int length_local_var_name = 1;
+int length_local_var_name = 3;
+
+String class_name = null;
+String property_name = null;
+String method_name = null;
+String field_name = null;
+String local_var_name = null;
 
 
-void Visit(SyntaxNode node)
+void GettingNames(SyntaxNode node)
 {
-    String class_name = null;
-    String property_name = null;
-    String method_name = null;
-    String field_name = null;
-    String local_var_name = null;
-
     if (node is VariableDeclaratorSyntax)
     {
         if (node.Parent is VariableDeclarationSyntax)
@@ -34,7 +34,7 @@ void Visit(SyntaxNode node)
                 field_name = nameSyntax.Identifier.Text;
             }
 
-            else if (node.Parent.Parent is LocalDeclarationStatementSyntax)
+            else
             {
                 VariableDeclaratorSyntax nameSyntax = (VariableDeclaratorSyntax)node;
                 local_var_name = nameSyntax.Identifier.Text;
@@ -60,7 +60,11 @@ void Visit(SyntaxNode node)
         MethodDeclarationSyntax nameSyntax = (MethodDeclarationSyntax)node;
         method_name = nameSyntax.Identifier.Text;
     }
+}
 
+void Visit(SyntaxNode node)
+{
+    GettingNames(node);
 
     if (class_name != null && class_name.Length > length_class_name)
         Console.WriteLine($"Length of name of class \"{class_name}\" more than acceptable");
