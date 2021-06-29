@@ -1,0 +1,146 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer.CodeFixes\\CodeAnalyzer.CodeFixes.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer.CodeFixes\\CodeAnalyzer.CodeFixes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer.CodeFixes\\CodeAnalyzer.CodeFixes.csproj",
+        "projectName": "CodeAnalyzer.CodeFixes",
+        "projectPath": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer.CodeFixes\\CodeAnalyzer.CodeFixes.csproj",
+        "packagesPath": "C:\\Users\\exesaLigno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer.CodeFixes\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\NuGet.Config",
+          "C:\\Users\\exesaLigno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj": {
+                "projectPath": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj",
+        "projectName": "*C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj*",
+        "projectPath": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\CodeAnalyzer.csproj",
+        "packagesPath": "C:\\Users\\exesaLigno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\CodeAnalyzer\\CodeAnalyzer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\exesaLigno\\source\\repos\\Analyzer\\NuGet.Config",
+          "C:\\Users\\exesaLigno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.Analyzers": {
+              "target": "Package",
+              "version": "[2.9.8, )"
+            },
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

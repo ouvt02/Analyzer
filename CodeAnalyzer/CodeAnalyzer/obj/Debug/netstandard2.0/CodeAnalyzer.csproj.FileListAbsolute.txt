@@ -1,0 +1,11 @@
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\bin\Debug\netstandard2.0\CodeAnalyzer.deps.json
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\bin\Debug\netstandard2.0\CodeAnalyzer.dll
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\bin\Debug\netstandard2.0\CodeAnalyzer.pdb
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.csprojAssemblyReference.cache
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.Resources.resources
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.csproj.GenerateResource.cache
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.AssemblyInfoInputs.cache
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.AssemblyInfo.cs
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.dll
+C:\Users\exesaLigno\source\repos\CodeAnalyzer\CodeAnalyzer\CodeAnalyzer\obj\Debug\netstandard2.0\CodeAnalyzer.pdb
